@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html>
+    <head lang="ko">
+        <meta charset="utf-8">
+        <title>nohmijin</title>
+
+        <!--static file-->
+        {% load staticfiles %}
+        <link rel="stylesheet" href="{% static 'r_registeraion/css/style.css' %}">
+        <link rel="stylesheet" href="{% static 'r_registeration/css/navigation.min.css' %}">
+
+        <!--css CDN-->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
+        
+        <style>
+            
+            @font-face { font-family: 'GoyangDeogyang'; src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_one@1.0/GoyangDeogyang.woff') format('woff'); font-style: normal; }
+
+            html, body, #head {
+                height: 100%;
+            }
+            
+            .navbar-dark {
+                transition:500ms ease;
+                background: transparent;
+            }
+
+            .navbar-dark.scrolled {
+                background: #1992d7;
+            }
+
+            
+            .aboutus {
+                padding: 50px 0;
+                font-family: 'GoyangDeogyang';
+            }
+
+            .header {
+                background-image: url('https://t1.daumcdn.net/cfile/tistory/232EA7415825A82802');
+                background-repeat: no-repeat;
+                background-position: center center;
+                background-size: cover;
+                height: 100%;
+                text-align: center;
+            }
+
+            .header_text {
+                position: relative;
+                top: 30%;
+            }
+
+            .header_text h1 {
+                font-family: 'Gothic A1', sans-serif;
+                font-weight: bold;
+                padding-bottom: 0.5rem;
+            }
+
+            .header_text h4 {
+                font-family: 'Noto Sans KR',sans-serif;
+                font-style: italic;
+                font-size: 14px;
+                padding-bottom: 2rem;
+            }
+
+            .flip-card {
+            background-color: transparent;
+            width: 200px;
+            height: 200px;
+            perspective: 1000px;
+            }
+
+            .flip-card-inner {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            text-align: center;
+            transition: transform 0.6s;
+            transform-style: preserve-3d;
+            box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+            }
+
+            .flip-card:hover .flip-card-inner {
+            transform: rotateY(180deg);
+            }
+
+            .flip-card-front, .flip-card-back {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            backface-visibility: hidden;
+            }
+
+            .flip-card-front {
+            background-color: #bbb;
+            color: black;
+            z-index: 2;
+            }
+
+            .flip-card-back {
+            background-color: #2980b9;
+            color: white;
+            transform: rotateY(180deg);
+            z-index: 1;
+            }
+
+        </style>
+    </head>
+
+    <body>
+        
+        <!--nav section-->
+        <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
+            <a class="navbar-brand" href="#">{% block title %}회원가입{% endblock %}</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="navbarColor01">
+                <ul class="navbar-nav mr-auto">
+                    <li class="nav-item active">
+                        <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">About</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Language</a>
+                    </li>
+                </ul>
+                <form class="form-inline my-2 my-lg-0">
+                    <input class="form-control mr-sm-2" type="text" placeholder="Search">
+                    <button class="btn btn-secondary my-2 my-sm-0" type="submit">Search</button>
+                </form>
+            </div>
+        </nav>
+        <!--/. nav section-->
+        
+        
+        <!--head section-->
+        <section id="head">
+            <div class="header">
+                <div class="header_text">
+                    <h1>My Lovely Room</h1>
+                    <h4>자취방 단기 임대 서비스</h4>
+                    <a class="btn btn-primary" href="{%url 'postcreate' %}">자취방 등록하기</a>
+                    <a class="btn btn-primary" href="{%url 'find' %}">자취방 찾아보기</a>
+                </div>
+            </div>
+        </section>
+        <!--/. head section-->
+
+        <!--aboutus section-->    
+        <section class="aboutus">
+
+            <div class="container">
+                <h2 class="text-center">ABOUT US</h2>
+
+                <div class="row mx-auto my-4">
+                    <div class="col-sm-4">
+                        <div class="flip-card mx-auto">
+                            <div class="flip-card-inner">
+                                <div class="flip-card-front">
+                                <img class="img-thumbnail" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRbqXXZ9bvEdMLqeIostuHOdpP4KSwTry_pDOyMTfQCDUKCXiMw" style="width:100%;">
+                                </div>
+                                <div class="flip-card-back">
+                                    <br>
+                                    <h4>강연재</h4> 
+                                    <p>Backend</p> 
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-sm-4">
+                        <div class="flip-card mx-auto">
+                            <div class="flip-card-inner">
+                                <div class="flip-card-front">
+                                <img class="img-thumbnail" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRbqXXZ9bvEdMLqeIostuHOdpP4KSwTry_pDOyMTfQCDUKCXiMw" style="width:100%;">
+                                </div>
+                                <div class="flip-card-back">
+                                    <h4>김지연</h4> 
+                                    <p>Frontend</p> 
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-sm-4">
+                        <div class="flip-card mx-auto">
+                            <div class="flip-card-inner">
+                                <div class="flip-card-front">
+                                <img class="img-thumbnail" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRbqXXZ9bvEdMLqeIostuHOdpP4KSwTry_pDOyMTfQCDUKCXiMw" style="width:100%;">
+                                </div>
+                                <div class="flip-card-back">
+                                    <h4>노미진</h4> 
+                                    <p>Frontend</p> 
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row mx-auto">
+                    <div class="col-sm-4">
+                        <div class="flip-card mx-auto">
+                            <div class="flip-card-inner">
+                                <div class="flip-card-front">
+                                <img class="img-thumbnail" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRbqXXZ9bvEdMLqeIostuHOdpP4KSwTry_pDOyMTfQCDUKCXiMw" style="width:100%;">
+                                </div>
+                                <div class="flip-card-back">
+                                    <h4>노하은</h4> 
+                                    <p>Backend</p> 
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-sm-4">
+                        <div class="flip-card mx-auto">
+                            <div class="flip-card-inner">
+                                <div class="flip-card-front">
+                                <img class="img-thumbnail" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRbqXXZ9bvEdMLqeIostuHOdpP4KSwTry_pDOyMTfQCDUKCXiMw" style="width:100%;">
+                                </div>
+                                <div class="flip-card-back">
+                                    <h4>박건희</h4> 
+                                    <p>Frontend</p> 
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-sm-4">
+                        <div class="flip-card mx-auto">
+                            <div class="flip-card-inner">
+                                <div class="flip-card-front">
+                                <img class="img-thumbnail" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRbqXXZ9bvEdMLqeIostuHOdpP4KSwTry_pDOyMTfQCDUKCXiMw" style="width:100%;">
+                                </div>
+                                <div class="flip-card-back">
+                                    <h4>오석호</h4> 
+                                    <p>Backend</p> 
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!--/.aboutus-->
+        
+         <!-- jQuery library -->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+        <!-- Popper JS -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+        <!-- Latest compiled JavaScript -->
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+
+        <script>
+            $(window).scroll(function() {
+                $('.navbar').toggleClass('scrolled', $(this).scrollTop() > 50);
+            });
+        </script>
+
+    </body>
+</html>

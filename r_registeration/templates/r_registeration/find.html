@@ -1,0 +1,190 @@
+
+
+<!DOCTYPE html>
+<html>
+    <head lang="ko">
+        <meta charset="utf-8">
+        <title>nohmijin</title>
+
+        <!--static file-->
+        {% load staticfiles %}
+        <link rel="stylesheet" href="{% static 'r_registeraion/css/style.css' %}">
+        <link rel="stylesheet" href="{% static 'r_registeration/css/navigation.min.css' %}">
+
+        <!--css CDN-->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
+        
+        <!--폰트-->
+        <link href="https://fonts.googleapis.com/css?family=Noto+Sans+KR" rel="stylesheet">
+
+        <style>
+
+            .filter {
+                padding: 100px 0;
+            }
+            
+            
+            body {
+                font-family: 'Noto Sans KR', sans-serif;
+            }
+        </style>
+    </head>
+    <body>
+        <!--nav section-->
+        <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+            <a class="navbar-brand" href="#">로그인</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="navbarColor01">
+                <ul class="navbar-nav mr-auto">
+                    <li class="nav-item active">
+                        <a class="nav-link" href="{% url 'home' %}">Home <span class="sr-only">(current)</span></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">About</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Language</a>
+                    </li>
+                </ul>
+                <form class="form-inline my-2 my-lg-0">
+                    <input class="form-control mr-sm-2" type="text" placeholder="Search">
+                    <button class="btn btn-secondary my-2 my-sm-0" type="submit">Search</button>
+                </form>
+            </div>
+        </nav>  
+        <!--/. nav section-->
+        
+        
+        <!--filter section-->
+        <section class="filter">
+            <div class="container">
+
+
+                <p class="subtitle">원하는 방의 조건을 필터링 해 주세요</p>
+            
+                
+            <div class="btn-group">
+                <button type="button" class="btn btn-light dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    지역(구)
+                </button>
+                <div class="dropdown-menu">
+                    
+                    <a class="dropdown-item" href="#">Action</a>
+                    
+                    <a class="dropdown-item" href="#">Another action</a>
+                    
+                    <a class="dropdown-item" href="#">Something else here</a>
+                    
+                </div>
+
+                <button type="button" class="btn btn-light dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    지역(동)
+                </button>
+                <div class="dropdown-menu">
+                    <a class="dropdown-item" href="#">Action</a>
+                    <a class="dropdown-item" href="#">Another action</a>
+                    <a class="dropdown-item" href="#">Something else here</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="#">Separated link</a>
+                </div>
+                <button type="button" class="btn btn-light dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    임차인 성별
+                </button>
+                <div class="dropdown-menu">
+                    <a class="dropdown-item" href="#">Action</a>
+                    <a class="dropdown-item" href="#">Another action</a>
+                    <a class="dropdown-item" href="#">Something else here</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="#">Separated link</a>
+                </div>
+
+                <button type="button" class="btn btn-light dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    임차인 나이
+                </button>
+                <div class="dropdown-menu">
+                    <a class="dropdown-item" href="#">20대</a>
+                    <a class="dropdown-item" href="#">30대</a>
+                    <a class="dropdown-item" href="#">40대</a>
+                    <a class="dropdown-item" href="#">40대 이상</a>
+                </div>
+            </div>
+
+            </div>
+        </section>
+        <!--/. filter section-->
+        
+        <!--rooms section-->
+        <section class="rooms">
+            <div class="container">
+
+                <h4 class="title">Detail information</h4>
+                <p class="subtitle">원하는 방을 클릭해서 확인해 주세요</p>
+
+                <div class="row mx-auto">
+{% for blog in blog.all %}
+                    <div class="col-lg-4">
+                        <div class="card h-100 mx-auto" style="width: 18rem;">
+                            <img src="https://t-ec.bstatic.com/images/hotel/max1024x768/184/18473835.jpg" class="card-img-top" alt="...">
+                            <div class="card-body">
+                                
+                                <p class="deadline card-text">{{ blog.title }}</p>
+                                <p class="adress card-text">{{ blog.address1 }}</p>
+                                <p class="bill card-text">{{ blog.bill }}</p>
+                                <a href="{% url 'detail' blog.id %}" class="btn btn-primary">방 자세히 보기</a></a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- <div class="col-lg-4">
+                        <div class="card h-100 mx-auto" style="width: 18rem;">
+                            <img src="https://www.speedybooker.com/pool/oxford-college-b-b-accommodation.jpg" class="card-img-top" alt="...">
+                            <div class="card-body">
+                                <p class="deadline card-text">{{ blog.title }}</p>
+                                <p class="adress card-text">{{ blog.address1 }}</p>
+                                <p class="bill card-text">{{ blog.bill }}</p>
+                                <a href="{% url 'detail' blog.id %}" class="btn btn-primary">방 자세히 보기</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-4">
+                        <div class="card h-100 mx-auto" style="width: 18rem;">
+                            <img src="https://files.qatarliving.com/2019/02/18/standard_ph04.jpg" class="card-img-top" alt="...">
+                            <div class="card-body">
+                                <p class="deadline card-text">{{ blog.title }}</p>
+                                <p class="adress card-text">{{ blog.address1 }}</p>
+                                <p class="bill card-text">{{ blog.bill }}</p>
+                                <a href="{% url 'detail' blog.id %}" class="btn btn-primary">방 자세히 보기</a>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div> -->
+            <br><br><br>
+    
+{% endfor %}
+        </section>
+        
+        <!--/. rooms section-->
+
+        <!-- jQuery library -->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+        <!-- Popper JS -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+        <!-- Latest compiled JavaScript -->
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+
+        <script>
+            $(window).scroll(function() {
+                $('.navbar').toggleClass('scrolled', $(this).scrollTop() > 50);
+            });
+        </script>
+    
+    </body>
+</html>
+
+    

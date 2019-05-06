@@ -1,0 +1,9 @@
+html, body {
+    height: 100%
+}
+
+.head {
+    height: 100%;
+    background-image: url('/static/u_registeration/image/new.jpg');
+}
+
